@@ -1,0 +1,16 @@
+server:
+  port: 8081 # 项目端口号
+
+spring:
+  rabbitmq:
+    addresses: 10.10.10.11:5672 #rabbitmq地址。。
+    username: root
+    password: escst@123
+    virtual-host: / #虚拟主机
+    connection-timeout: 15000
+    listener:
+      simple:
+        concurrency: 5 #并发数
+        max-concurrency: 10 #最大并发数
+        acknowledge-mode: manual #手动接收消息
+        prefetch: 1 #限流
