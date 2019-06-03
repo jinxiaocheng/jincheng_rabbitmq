@@ -1,5 +1,6 @@
 package com.jincheng.producer.order;
 
+import com.jincheng.producer.entity.OrderEntity;
 import com.jincheng.producer.producer.OrderSender;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,7 +22,7 @@ public class OrderTest {
 
     @Test
     public void send() {
-        orderSender.send();
+        orderSender.send(new OrderEntity());
     }
 
 }

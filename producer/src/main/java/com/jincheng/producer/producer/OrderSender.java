@@ -1,5 +1,7 @@
 package com.jincheng.producer.producer;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.jincheng.producer.entity.OrderEntity;
 import org.springframework.amqp.rabbit.connection.CorrelationData;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
@@ -24,16 +26,14 @@ public class OrderSender {
      * @author jincheng
      * @date 2019-5-31 13:52
      */
-    public void send() {
+    public void send(OrderEntity orderEntity) {
 
-        // 创建一个order
-        OrderEntity orderEntity = new OrderEntity();
         orderEntity.setId(UUID.randomUUID().toString());
         orderEntity.setName("订单测试");
         orderEntity.setMessageId(UUID.randomUUID().toString());
 
         // 发送消息到 “order-exchange” 交换机里
-        rabbitTemplate.convertAndSend("order-exchange", "order-a", orderEntity);
+        rabbitTemplate.convertAndSend("order-exchange", "order-a", JSON.toJSONString(orderEntity));
 
     }
 

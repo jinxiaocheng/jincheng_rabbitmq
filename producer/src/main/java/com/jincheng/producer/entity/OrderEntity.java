@@ -12,9 +12,12 @@ import java.io.Serializable;
 @Data
 public class OrderEntity implements Serializable {
 
+    private static final long serialVersionUID = 6843855054172116493L;
+
     private String id;
 
     private String name;
 
     private String messageId;
+
 }
